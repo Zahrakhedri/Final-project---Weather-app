@@ -44,3 +44,7 @@ h1 {
   height: 50px;
   padding: 15px 20px;
 }
+#resource {
+  margin-left: 115px;
+  font-size: smaller;
+}

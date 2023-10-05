@@ -10,6 +10,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>weather app</title>
   </head>
@@ -40,21 +41,24 @@
         <div class="row justify-content-around">
           <div class="col-6">
             <h1>San Francisco</h1>
-            <li>Monday 12:37 , few clods</li>
-            <li>Humidity: 90%, Wind speed: 5.14 km/h</li>
+            <li>Monday 12:37 , <span id="description">few clods</span></li>
+            <li>
+              Humidity: <span id="humidity">90</span>%, Wind speed:
+              <span id="wind">5.14</span> km/h
+            </li>
           </div>
           <div class="col-6" id="temp-icon">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAaVBMVEX/////wwP/vwD/wQD/7cj/vQD//vv/+/H//vn//fb/+On/+u3/ykT/8M7/3ZH/zlb/9+T/9Nv/zU/+4Jn/xCb/3Ir/xzP/2YH/8tX/4qL/2Hv/z1z/yDv/6rn/wxj+1nH/7cL/5q//02hdiDjCAAAEcUlEQVRoge2aa7eqIBCGA7xfMsnIzOzy/3/kVsQ0E+K2jmud5ftt79CHgWEYGHe7TZs2bdo0KNpX+2gddOlCBN10FTagQmugS5eyVzHc6dnQWYMNN/bG3tgbW13BBeNLIGCzmCpgexecHEMNNG7tgpnPbRAzNn8X9bPuFYk6/EKHFGYxt0XVtYB3Pvrav2KvzE7YFsm33KsQQneP93PYowEolNl1/yCAmD/nccofcA8ztAb7ODyKaq5pAnk1GjqvPuZhMjyMlr3Fi/O8zPN4sWch/vG0WNEIx7M59/JHhUnRIICaguDqls864Gcj+qCOnsI/l9rhiAEcfqLvhwAfp4i3m7VozUQ2Huesev/TuSIIvgXRdQwypzeaaOfQfjHAC2Z4it0FcC83YWljSIZ/NfzQ9FMhYfCGDml855Mp/UUjUVQMVhugW8vZnCfdH7cGCcCUhm5dwz4uoZofE6UU0RAB21d6519kCqxal3/QZ/Q8fKq4KpqksyZbcrFvwayDJ01xN7S6p3f9DxI59LBxHWyQmaTR3ZrWCcJceZIDzizHNuFnFfRHKDLWTcbDp+qXmg3FjSK6la37iJeq2a3hLzvoVBxIlyVKXxWUaKABqG2gHR2zW8MfFthXLTQAV/NFflB3tF4wN2Yf1cLKhK2en87kYU10u+cLDnNSyrXRAJgO+k13yPuEw0iVrqu1sY1/TJST/nSzJE9apTOK5pge+Y3gilBnC9PxnSWfDFwXDnLdszemu1qiifXp452Ac/MbzYJnlwHkGtvnqHxyRGFyl5PX/dylUdwOhYnKXTjvOzovsr9dutylRux0ISIvb+yneTsLdvuSdh/m8303C2sA5d9ZpssJdg4cXbJ1yntgwc+9auLn7fsfy+i24WQpOjTbC4zWN73tiCbvTJX29H8X1751N4jnprmqyT72NGSvuX8HehlyJ52LtU99RVpZwZMpepevmKd6uvl5ZuEQ/tA8l1g5Bte/QQsiNtB6BzIrx7Gd3vk7s4PeRRps43u9QU9VuHE4nahSvGcyPRVM5WEVy5HxKfBDQS0PR8Q4kI/c7mrUJ7Lw/tY8tmF6eCIFdliNUkL0KjfFBTkbXdx3ooVF1KV43l0GDrsMMwVIXEuVs5pd4tLU64l+1w0uXcPeMyE2mve3f/f1kuj6o16S9c2GeonJZfZYWCzYVbxDBHUi8ugbvetEqNb2uLGwOAkWjwwu1sdgNm6a78PIV0VRVv6kujepQHj5KUGzuiBKTtOypD92WlA/l0PXs50hyJ+vhPTHvIYkr2c+86pJLVXH2ydlCrLY9/BQlmlZzrGs42S0XH3OL2+rtQqL4bucCY/KDw95uaiwGBz4K9gf14guW1RE3jeoWT7Kd4qHOdf95kCEptc4kA9nDqdxRghrKK5p+uz7Fv4iirqCHlz2VLH8fdHsBW4m8V1PuG+Kk8Xi5Mj+T7+l2tgbe2OvzF7xO+x0xe/Pd/0WCa1+1CErx0UA2brbUFV+vp7NL9F0tcp4b9q0aZNQf8QCNgxQdEqaAAAAAElFTkSuQmCC"
               alt="icon"
             />
-            12
+            <span id="temperature">12</span>
             <span>°C| <a href="#">°F</a> </span>
           </div>
         </div>
       </ul>
     </div>
-    <span><a href="#">open source code</a> by Zahra Khedri</span>
-    <script src="src/index.js"></script>
+    <span id="resource"><a href="#">open source code</a> by Zahra Khedri</span>
   </body>
+  <script src="src/index.js"></script>
 </html>
