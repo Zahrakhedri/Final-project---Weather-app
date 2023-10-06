@@ -48,3 +48,15 @@ h1 {
   margin-left: 115px;
   font-size: smaller;
 }
+
+#celcius-link {
+  text-decoration: none;
+}
+#fahrenheit-link {
+  text-decoration: none;
+}
+
+.active {
+  color: rgba(39, 33, 66, 0.4);
+  cursor: default;
+}
