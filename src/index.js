@@ -41,9 +41,19 @@ function showTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+function search(city) {
+  let apiKey = "85bbd3d16a2dfe0ecf253c7ae1e8fe03";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
 
-let apiKey = "85bbd3d16a2dfe0ecf253c7ae1e8fe03";
-let city = "san francisco";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function handleSubmit(event) {
+  event.preventDefault();
+  let inputElement = document.querySelector("#city-input");
+  search(inputElement.value);
+}
 
-axios.get(apiUrl).then(showTemperature);
+let formElement = document.querySelector("#search-form");
+formElement.addEventListener("submit", handleSubmit);
+
+search("london");
