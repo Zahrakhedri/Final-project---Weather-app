@@ -60,3 +60,15 @@ h1 {
   color: rgba(39, 33, 66, 0.4);
   cursor: default;
 }
+
+.weather-forcast {
+  text-align: center;
+  color: black;
+}
+.weather-forcast-date {
+  opacity: 0.6;
+  font-size: 22px;
+}
+.min-temp {
+  opacity: 0.5;
+}

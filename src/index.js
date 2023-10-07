@@ -21,6 +21,27 @@ function formatDate(timestamp) {
   return `${day}  ${hours}:${minutes}`;
 }
 
+function displayForecast(response) {
+  let weatherForecast = document.querySelector("#forecast");
+  let days = ["sun", "mon", "thu"];
+  let forecastHtml = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `    <div class="col-2">
+            <div class="weather-forecast-date">${day}</div>
+            <div class="weather-forecast-icon"><img src="#" alt="" /></div>
+            <div class="weather-forecast-temperature">
+              <span class="max-temp">18° </span>
+              <span class="min-temp">12°</span>
+            </div>
+          </div>
+  `;
+  });
+  forecastHtml = forecastHtml + `</div>`;
+  weatherForecast.innerHTML = forecastHtml;
+}
+
 function showTemperature(response) {
   let cityName = document.querySelector("h1");
   let temperatureElement = document.querySelector("#temperature");
@@ -85,3 +106,4 @@ let celcuisLink = document.querySelector("#celcius-link");
 celcuisLink.addEventListener("click", displayCelciusTemperature);
 
 search("san francisco");
+displayForecast();
