@@ -21,25 +21,47 @@ function formatDate(timestamp) {
   return `${day}  ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = date.getDay();
+  return days[day];
+}
+
 function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(response);
   let weatherForecast = document.querySelector("#forecast");
-  let days = ["sun", "mon", "thu"];
   let forecastHtml = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `    <div class="col-2">
-            <div class="weather-forecast-date">${day}</div>
-            <div class="weather-forecast-icon"><img src="#" alt="" /></div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `    <div class="col-2">
+            <div class="weather-forecast-date">${formatDay(
+              forecastDay.dt
+            )}</div>
+            <div class="weather-forecast-icon"><img src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" alt="" /></div>
             <div class="weather-forecast-temperature">
-              <span class="max-temp">18° </span>
-              <span class="min-temp">12°</span>
+              <span class="max-temp">${Math.round(
+                forecastDay.temp.max
+              )}° </span>
+              <span class="min-temp">${Math.round(forecastDay.temp.min)}°</span>
             </div>
           </div>
   `;
+    }
   });
   forecastHtml = forecastHtml + `</div>`;
   weatherForecast.innerHTML = forecastHtml;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemperature(response) {
@@ -62,6 +84,7 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 function search(city) {
   let apiKey = "85bbd3d16a2dfe0ecf253c7ae1e8fe03";
@@ -106,4 +129,3 @@ let celcuisLink = document.querySelector("#celcius-link");
 celcuisLink.addEventListener("click", displayCelciusTemperature);
 
 search("san francisco");
-displayForecast();
